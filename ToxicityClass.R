@@ -1,5 +1,3 @@
-#Diniz chupa rola
-
 inst_pkgs = load_pkgs = c("chron","tm","SnowballC","wordcloud","RColorBrewer","rvest","gdata","data.table")
 
 inst_pkgs = inst_pkgs[!(inst_pkgs %in% installed.packages()[,"Package"])]
