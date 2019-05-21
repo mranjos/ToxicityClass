@@ -1,42 +1,12 @@
-if("chron" %in% rownames(installed.packages()) == FALSE){
-  install.packages("chron")
+inst_pkgs = load_pkgs = c("chron","tm","SnowballC","wordcloud","RColorBrewer","rvest","gdata","data.table")
+
+inst_pkgs = inst_pkgs[!(inst_pkgs %in% installed.packages()[,"Package"])]
+
+if(length(inst_pkgs)){
+  install.packages(inst_pkgs)
 } 
-library(chron)
 
-if("tm" %in% rownames(installed.packages()) == FALSE){
-  install.packages("tm")
-}
-library(tm)
-
-if("SnowballC" %in% rownames(installed.packages()) == FALSE){
-  install.packages("SnowballC")
-}
-library(SnowballC)
-
-if("wordcloud" %in% rownames(installed.packages()) == FALSE){
-  install.packages("wordcloud")
-}
-library(wordcloud)
-
-if("RColorBrewer" %in% rownames(installed.packages()) == FALSE){
-  install.packages("RColorBrewer")
-}
-library(RColorBrewer)
-
-if("rvest" %in% rownames(installed.packages()) == FALSE){
-  install.packages("rvest")
-}
-library(rvest)
-
-if("gdata" %in% rownames(installed.packages()) == FALSE){
-  install.packages("gdata")
-}
-library(gdata)
-
-if("data.table" %in% rownames(installed.packages()) == FALSE){
-  install.packages("data.table")
-}
-library(data.table)
+lapply(load_pkgs, require, character.only=T)
 
 setwd(" ")
 dados=fread("train.csv",header = TRUE)
